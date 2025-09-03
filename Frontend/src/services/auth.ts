@@ -12,16 +12,15 @@ export type LoginPayload = {
 const AUTH_API = (import.meta as any).env?.VITE_AUTH_API || 'https://prediccion-de-sismos-facial-v1.onrender.com';
 
 export async function registerUser(data: RegisterPayload) {
-  const params = new URLSearchParams();
-  params.append('username', data.username);
-  params.append('face_image', data.face_image);
-  if (data.dni) params.append('dni', data.dni);
-  if (data.email) params.append('email', data.email);
+  const form = new FormData();
+  form.append('username', data.username);
+  form.append('face_image', data.face_image);
+  if (data.dni) form.append('dni', data.dni);
+  if (data.email) form.append('email', data.email);
 
   const res = await fetch(`${AUTH_API}/auth/register`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: params.toString(),
+    body: form,
   });
   if (!res.ok) {
     const errorText = await res.text();
@@ -32,15 +31,14 @@ export async function registerUser(data: RegisterPayload) {
 }
 
 export async function loginFace(data: LoginPayload) {
-  const params = new URLSearchParams();
-  params.append('face_image', data.face_image);
+  const form = new FormData();
+  form.append('face_image', data.face_image);
 
   console.log('Attempting facial login to:', `${AUTH_API}/auth/login/face`);
-  
+
   const res = await fetch(`${AUTH_API}/auth/login/face`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: params.toString(),
+    body: form,
   });
   
   if (!res.ok) {

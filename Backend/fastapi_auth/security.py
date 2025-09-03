@@ -11,9 +11,8 @@ import imagehash
 JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY", "change-me-in-prod")
 JWT_ALGORITHM = os.getenv("JWT_ALGORITHM", "HS256")
 ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "60"))
-# Reducimos el umbral por defecto para evitar falsos positivos en phash (64 bits)
-# Recomendado: 6-10 según condiciones de iluminación. Permitimos override por ENV.
-FACE_MATCH_THRESHOLD = int(os.getenv("FACE_MATCH_THRESHOLD", "15"))
+# Umbral por defecto más tolerante para pHash (64 bits). Overrideable por ENV.
+FACE_MATCH_THRESHOLD = int(os.getenv("FACE_MATCH_THRESHOLD", "22"))
 
 
 def create_access_token(subject: str, expires_delta: Optional[timedelta] = None) -> str:
