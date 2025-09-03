@@ -20,7 +20,7 @@ export default defineConfig({
     host: true,
     proxy: {
       '/auth': {
-        target: 'http://localhost:8001',
+        target: 'https://prediccion-de-sismos-facial-v1.onrender.com',
         changeOrigin: true,
         secure: false,
       },
