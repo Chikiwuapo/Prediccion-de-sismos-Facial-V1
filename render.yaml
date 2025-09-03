@@ -6,14 +6,14 @@ services:
     rootDirectory: Backend
     buildCommand: pip install -r requirements.txt
     startCommand: uvicorn fastapi_auth.main:app --host 0.0.0.0 --port $PORT
-    healthCheckPath: /health
+    healthCheckPath: /healthz
     autoDeploy: true
     plan: free
     envVars:
       - key: PYTHON_VERSION
         value: 3.11
       - key: CORS_ALLOWED_ORIGINS
-        value: https://prediccion-de-sismos-facial-v1.vercel.app/
+        value: https://prediccion-de-sismos-facial-v1.vercel.app,http://localhost:3000
       # Si usas DB gestionada, descomenta y coloca tu cadena
       # - key: DATABASE_URL
       #   value: mysql://user:pass@host:3306/dbname
