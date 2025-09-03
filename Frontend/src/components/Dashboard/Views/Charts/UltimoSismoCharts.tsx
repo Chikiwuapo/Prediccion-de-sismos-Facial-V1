@@ -25,7 +25,7 @@ interface UltimoSismoChartsProps {
   selectedYear: number | 'all';
 }
 
-const UltimoSismoCharts: React.FC<UltimoSismoChartsProps> = ({ countryData, selectedYear }) => {
+const UltimoSismoCharts: React.FC<UltimoSismoChartsProps> = ({ countryData, selectedYear: _selectedYear }) => {
   const { theme } = useTheme();
   
   // Obtener el último sismo
@@ -220,7 +220,7 @@ const UltimoSismoCharts: React.FC<UltimoSismoChartsProps> = ({ countryData, sele
                   itemStyle={{
                     color: '#111827'
                   }}
-                  formatter={(value: any, name: any) => [
+                  formatter={(value: any, _name: any) => [
                     `M${value.toFixed(1)}`, 
                     'Magnitud'
                   ]}

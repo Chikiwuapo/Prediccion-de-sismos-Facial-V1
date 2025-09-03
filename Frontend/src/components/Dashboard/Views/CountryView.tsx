@@ -80,7 +80,7 @@ const CountryView: React.FC<CountryViewProps> = ({ country }) => {
   }, [countryData, selectedYear, country.name, magnitudeFilter, rangeFilter]);
 
   // Aplicar filtros a los eventos
-  const filteredEvents = (countryData?.recent_events || []).filter((event: any, index: number) => {
+  const filteredEvents = (countryData?.recent_events || []).filter((event: any) => {
     const magnitude = event.magnitude || 0;
     const range = getMagnitudeRange(magnitude);
     

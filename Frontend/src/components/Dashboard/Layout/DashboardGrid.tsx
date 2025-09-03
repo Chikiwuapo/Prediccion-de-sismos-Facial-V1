@@ -71,8 +71,8 @@ const DashboardGrid: React.FC = () => {
     })), null, 2));
     
     // Helper para normalizar
-    const stripDiacritics = (s: string) => s.normalize('NFD').replace(/\p{Diacritic}/gu, '');
-    const KEY = (s: string) => stripDiacritics(s).trim().toUpperCase();
+    // const stripDiacritics = (s: string) => s.normalize('NFD').replace(/\p{Diacritic}/gu, '');
+    // const KEY = (s: string) => stripDiacritics(s).trim().toUpperCase();
 
     // Catálogo canónico: nombre para mostrar, código ISO2 y coordenadas (aprox capital/centro)
     const META = {

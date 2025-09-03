@@ -27,7 +27,6 @@ import styles from '../../../styles/PredictionsView.module.css';
 const PredictionsView: React.FC = () => {
   const { 
     countries, 
-    predictionCountry, 
     setPredictionCountry, 
     predictionData, 
     setPredictionData,
