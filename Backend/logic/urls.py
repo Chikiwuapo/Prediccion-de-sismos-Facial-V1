@@ -19,5 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('api.urls')),
+    # Django está montado en /api desde combined_asgi.py, así que aquí se incluye en raíz
+    path('', include('api.urls')),
 ]
