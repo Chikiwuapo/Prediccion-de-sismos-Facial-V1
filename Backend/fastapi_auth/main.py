@@ -1,20 +1,25 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+import os
 from .routers import auth
 from .db import Base, engine
 from . import models
 
 app = FastAPI(title="FastAPI Auth", version="0.1.0")
 
-# CORS (ajusta origins según tu frontend)
+# CORS: permitir orígenes desde env (Render/Vercel) o defaults de desarrollo
+_cors_env = os.getenv("CORS_ALLOWED_ORIGINS", "")
+_cors_list = [o.strip() for o in _cors_env.split(",") if o.strip()]
+default_cors = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-        "http://localhost:5173",
-        "http://127.0.0.1:5173",
-    ],
+    allow_origins=_cors_list or default_cors,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
