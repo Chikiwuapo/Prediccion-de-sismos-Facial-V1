@@ -9,7 +9,7 @@ export type LoginPayload = {
   face_image: string; // dataURL base64
 };
 
-const AUTH_API = (import.meta as any).env?.VITE_AUTH_API || 'http://localhost:8001';
+const AUTH_API = (import.meta as any).env?.VITE_AUTH_API || 'https://prediccion-de-sismos-facial-v1.onrender.com';
 
 export async function registerUser(data: RegisterPayload) {
   const params = new URLSearchParams();

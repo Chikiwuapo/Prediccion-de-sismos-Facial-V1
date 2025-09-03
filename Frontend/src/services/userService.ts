@@ -181,7 +181,7 @@ export function isCEO(user?: User | null): boolean { return (user?.role || '').t
 
 // ==== Extensiones para integración con backend/auth y snapshots faciales ====
 
-const AUTH_API = (import.meta as any).env?.VITE_AUTH_API || 'http://localhost:8001';
+const AUTH_API = (import.meta as any).env?.VITE_AUTH_API || 'https://prediccion-de-sismos-facial-v1.onrender.com';
 
 type SnapshotType = 'login' | 'register';
 
